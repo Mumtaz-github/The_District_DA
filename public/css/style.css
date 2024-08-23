@@ -1,0 +1,10 @@
+body {
+    background-color:skyblue ; /*#222222*/
+}
+h1, p {
+    color: #C9C9C9;
+}
+
+.navbar {
+    min-height: 100px; /* adjust the height to your liking */
+  }
