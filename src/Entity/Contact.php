@@ -20,7 +20,8 @@ class Contact
     private ?string $objet = null;
 
     #[Assert\Email(message: "Veuillez saisir une adresse e-mail valide.")]
-    private $email;
+    #[ORM\Column(length: 255)]
+    private ?string $email;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $message = null;
