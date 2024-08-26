@@ -1,5 +1,5 @@
 body {
-    background-color:skyblue ; /*#222222*/
+    background-color:orange ; /*#222222*/
 }
 h1, p {
     color: #C9C9C9;
@@ -7,4 +7,6 @@ h1, p {
 
 .navbar {
     min-height: 100px; /* adjust the height to your liking */
+    color: aquamarine;
+    font-size: 28px;
   }

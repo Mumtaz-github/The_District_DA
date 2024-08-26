@@ -16,6 +16,41 @@ class ArtistRepository extends ServiceEntityRepository
         parent::__construct($registry, Artist::class);
     }
 
+
+
+
+// dans la classe ArtistRepository
+public function getSomeArtists($name)
+{
+    //$name est un paramètre qui pour cet exemple a come valeur "Neil";
+    $entityManager = $this->getEntityManager(); //on instancie l'entity manager
+
+    $query = $entityManager->createQuery( //on crée la requête 
+        'SELECT a
+        FROM App\Entity\Artist a
+        WHERE a.name  like :name'
+    )->setParameter('name', '%'.$name.'%');
+
+
+
+     // Créer une instance du QueryBuilder
+     $qb = $this->createQueryBuilder('a');
+
+     // Construire la requête
+     $qb
+         ->where('a.name LIKE :name') // Utilisation du placeholder pour éviter les injections SQL
+         ->setParameter('name', '%' . $name . '%') // Définir la valeur du placeholder
+         ->orderBy('a.id', 'ASC') // Optionnel : ordonner les résultats par ID
+         ->setMaxResults(10); // Optionnel : limiter le nombre de résultats à 10
+
+    // retourne un tableau d'objets de type Artist
+    return $query->getResult();
+
+}
+}
+
+
+
 //    /**
 //     * @return Artist[] Returns an array of Artist objects
 //     */
@@ -40,4 +75,4 @@ class ArtistRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-}
+

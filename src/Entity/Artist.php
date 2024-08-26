@@ -47,7 +47,7 @@ class Artist
         return $this->id;
     }
 
-    public function setId(?self $id): static
+    public function setId(?int $id): static
     {
         $this->id = $id;
 
