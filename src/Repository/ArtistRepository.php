@@ -30,18 +30,7 @@ public function getSomeArtists($name)
         FROM App\Entity\Artist a
         WHERE a.name  like :name'
     )->setParameter('name', '%'.$name.'%');
-
-
-
-     // Créer une instance du QueryBuilder
-     $qb = $this->createQueryBuilder('a');
-
-     // Construire la requête
-     $qb
-         ->where('a.name LIKE :name') // Utilisation du placeholder pour éviter les injections SQL
-         ->setParameter('name', '%' . $name . '%') // Définir la valeur du placeholder
-         ->orderBy('a.id', 'ASC') // Optionnel : ordonner les résultats par ID
-         ->setMaxResults(10); // Optionnel : limiter le nombre de résultats à 10
+    
 
     // retourne un tableau d'objets de type Artist
     return $query->getResult();

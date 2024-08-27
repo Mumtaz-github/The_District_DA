@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% apply inline_css %}
+    <style>
+        h1 {
+            color: #333;
+        }
+    </style>
+
+    <img src="{{ email.image('@images/logo.png') }}" alt="Logo">
+    <h1>Welcome {{ email.toName }}!</h1>
+    {# ... #}
+{% endapply %}
+
+{# {% block title %}Hello MailerController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<img src="cid:logo"> ... <img src="cid:footer-signature"> ...
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code>/home/sega/Documents/MS DEV APPLI/MonProjet/src/Controller/MailerController.php</code></li>
+        <li>Your template at <code>/home/sega/Documents/MS DEV APPLI/MonProjet/templates/mailer/index.html.twig</code></li>
+    </ul>
+</div> #}
+{% endblock %}
