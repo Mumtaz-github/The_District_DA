@@ -1,9 +1,11 @@
 framework:
     messenger:
+        # Specifies the transport used to handle failed messages
         failure_transport: failed
 
+        # Configuration of message transports
         transports:
-            # https://symfony.com/doc/current/messenger.html#transport-configuration
+            # Define your async transport (this is typically for handling messages)
             async:
                 dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
                 options:
@@ -12,18 +14,36 @@ framework:
                 retry_strategy:
                     max_retries: 3
                     multiplier: 2
+                    # Optionally configure the retry delay, e.g., 1000 ms, 5000 ms, etc.
+                    delay: 1000
+
+            # Define the transport for failed messages
             failed: 'doctrine://default?queue_name=failed'
+
+            # Optionally define a sync transport (for synchronous message handling)
             # sync: 'sync://'
 
+        # Define the default bus used for messaging
         default_bus: messenger.bus.default
 
+        # Configuration of message buses
         buses:
             messenger.bus.default: []
 
+        # Define routing rules for messages
         routing:
             Symfony\Component\Mailer\Messenger\SendEmailMessage: async
             Symfony\Component\Notifier\Message\ChatMessage: async
             Symfony\Component\Notifier\Message\SmsMessage: async
+            # You can add other message classes here if needed
 
-            # Route your messages to the transports
-            # 'App\Message\YourMessage': async
+
+
+
+
+
+
+
+
+
+
