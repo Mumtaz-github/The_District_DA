@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
+{# {% extends 'base.html.twig' %}
 
 {% block body %}
 
 <div class="row text-center">
 
     {# this form theme will be applied only to the form of this template #}
-{% form_theme form 'foundation_5_layout.html.twig' %}
+{#{% form_theme form 'foundation_5_layout.html.twig' %}
     {{ form_start(form) }}
     <div class="my-custom-class-for-errors">
         {{ form_errors(form) }}
@@ -22,4 +22,42 @@
        </div>
     {{ form_end(form) }}
 </div>
+{% endblock %} #}
+
+{#the above work with mariaDB }#}
+
+
+
+
+
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="row text-center">
+
+    {# Applique le thème Foundation 5 au formulaire #}
+    {% form_theme form 'foundation_5_layout.html.twig' %}
+    
+    {{ form_start(form) }}
+    
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="row">
+        <!-- Rendu du champ 'objet' avec un label personnalisé et des attributs de classe -->
+        <div class="col-md-12">
+            {{ form_label(form.objet, "Mon libellé a été modifié") }}
+            {{ form_widget(form.objet, {'attr': {'class': 'btn-light'} }) }}
+            {{ form_errors(form.objet) }}
+        </div>
+
+        <!-- Ajouter d'autres champs ici si nécessaire -->
+    </div>
+
+    {{ form_end(form) }}
+
+</div>
 {% endblock %}
+
